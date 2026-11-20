@@ -1,162 +1,235 @@
 <!DOCTYPE html>
-<!-- oss-template-2026:placeholder （この目印で，scripts/check.sh が「準備中」のページかどうかを見分けます） -->
-<!--
-  テンプレートの「準備中」のページです．
-  このページが https://ユーザー名.github.io/ に表示されたら，GitHub Pages の設定は成功です．
-  第7回の実習4で，このファイルを第6回で作った index.html に置きかえます．
--->
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>準備中</title>
-  <style>
-    /* ===== 色の設定 ===== */
-    :root {
-      --main-color: #2e7d32;  /* メインの色（見出し・番号） */
-      --bg-color: #f5f8f5;    /* ページの背景の色 */
-      --card-color: #ffffff;  /* カードの背景の色 */
-      --text-color: #222222;  /* 文字の色 */
-      --sub-color: #666666;   /* 補足の文字の色 */
-      --line-color: #dfe6df;  /* 区切り線の色 */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shota | Portfolio</title>
 
-    /* パソコンやスマートフォンがダークモードのときの色 */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --main-color: #81c784;
-        --bg-color: #121512;
-        --card-color: #1e231e;
-        --text-color: #e8ece8;
-        --sub-color: #a0a8a0;
-        --line-color: #2f362f;
-      }
-    }
+    <style>
+        /* ページ全体の基本設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* ページ全体：カードを画面のまんなかに置く */
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
-      box-sizing: border-box;
-      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-      line-height: 1.8;
-      color: var(--text-color);
-      background: var(--bg-color);
-    }
+        body {
+            font-family: "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+            background-color: #f4f8ff;
+            color: #333;
+            line-height: 1.8;
+        }
 
-    /* まんなかのカード */
-    main {
-      width: 100%;
-      max-width: 600px;
-      padding: 32px 28px;
-      background: var(--card-color);
-      border-top: 6px solid var(--main-color);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    }
+        /* ヘッダー部分 */
+        header {
+            background-color: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
 
-    h1 {
-      margin: 0 0 4px;
-      font-size: clamp(1.3rem, 6vw, 1.6rem);  /* スマートフォンでは少し小さくする */
-      line-height: 1.4;
-      color: var(--main-color);
-    }
+        header h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+        }
 
-    h2 {
-      margin: 28px 0 8px;
-      padding-bottom: 4px;
-      font-size: 1.05rem;
-      border-bottom: 1px solid var(--line-color);
-    }
+        header p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
 
-    /* 「設定は成功」のバッジ */
-    .badge {
-      display: inline-block;
-      margin: 8px 0 0;
-      padding: 2px 12px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: var(--card-color);
-      background: var(--main-color);
-      border-radius: 999px;
-    }
+        /* ナビゲーションメニュー */
+        nav {
+            background-color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #dbeafe;
+        }
 
-    /* 「次にやること」の番号つきリスト */
-    ol {
-      margin: 0;
-      padding-left: 1.4em;
-    }
-    li {
-      margin-bottom: 6px;
-    }
-    li::marker {
-      font-weight: bold;
-      color: var(--main-color);
-    }
+        nav a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
 
-    /* コマンドの見た目 */
-    code {
-      padding: 1px 6px;
-      font-family: "SFMono-Regular", Consolas, monospace;
-      font-size: 0.88em;
-      background: var(--bg-color);
-      border-radius: 4px;
-      white-space: nowrap;  /* コマンドの途中で折り返さない */
-    }
+        nav a:hover {
+            color: #1e40af;
+        }
 
-    /* 補足の小さな文字 */
-    .sub {
-      font-size: 0.9rem;
-      color: var(--sub-color);
-    }
+        /* メインコンテンツの幅と配置 */
+        main {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-    /* いちばん下の小さな文字 */
-    footer {
-      margin-top: 28px;
-      padding-top: 12px;
-      font-size: 0.8rem;
-      color: var(--sub-color);
-      border-top: 1px solid var(--line-color);
-    }
-    a {
-      color: var(--main-color);
-    }
-  </style>
+        /* 各紹介セクションのデザイン */
+        section {
+            background-color: white;
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #3b82f6;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        section h2 {
+            color: #2563eb;
+            font-size: 21px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #dbeafe;
+            padding-bottom: 8px;
+        }
+
+        section p {
+            font-size: 16px;
+        }
+
+        /* キャッチコピー部分 */
+        .catchcopy {
+            text-align: center;
+            background-color: #dbeafe;
+            border-left: none;
+            padding: 40px 20px;
+        }
+
+        .catchcopy h2 {
+            border: none;
+            color: #1d4ed8;
+            font-size: 24px;
+        }
+
+        .catchcopy p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* 基本情報の表示 */
+        .profile-item {
+            margin-bottom: 10px;
+        }
+
+        .profile-item strong {
+            display: inline-block;
+            width: 100px;
+            color: #1e40af;
+        }
+
+        /* フッター部分 */
+        footer {
+            background-color: #1e40af;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* スマートフォン向けのレイアウト調整 */
+        @media screen and (max-width: 600px) {
+            header h1 {
+                font-size: 26px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+            }
+
+            main {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .catchcopy h2 {
+                font-size: 21px;
+            }
+
+            .profile-item strong {
+                display: block;
+                width: auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <main>
-    <h1>このサイトは準備中です</h1>
-    <p class="badge">GitHub Pages の設定 OK</p>
-    <p>このページが表示されていれば，あなたのリポジトリは正しく公開されています．
-      あとは，このページを自分のサイトに置きかえるだけです．</p>
 
-    <h2>次にやること</h2>
-    <ol>
-      <li>このリポジトリを，SSHのURLで <code>git clone</code> する</li>
-      <li><code>index.html</code> を，第6回で作ったサイトに置きかえる</li>
-      <li><code>bash scripts/check.sh</code> で，公開前のチェックをする</li>
-      <li><code>git add</code> → <code>git commit</code> → <code>git push origin main</code> する</li>
-      <li>数分待ってから，このページを再読み込みする</li>
-    </ol>
-    <p class="sub">再読み込みしても変わらないときは，強制再読み込み（Windows：Ctrl + F5，Mac：Command + Shift + R）を試しましょう．</p>
+    <!-- サイトのタイトルと名前 -->
+    <header>
+        <h1>shota's Portfolio</h1>
+        <p>Takushoku University Faculty of Engineering</p>
+    </header>
 
-    <h2>公開する前に</h2>
-    <ul>
-      <li>本名のフルネーム・学籍番号・住所・電話番号・メールアドレスが入っていないか</li>
-      <li>自己紹介に書いていないことを，AIが付け足していないか</li>
-    </ul>
-    <p class="sub">このリポジトリは Public です．サイトだけでなく，ファイルの中身やコミットの履歴も，誰でも見ることができます．</p>
+    <!-- ページ内リンクのナビゲーション -->
+    <nav>
+        <a href="#profile">プロフィール</a>
+        <a href="#hobby">趣味</a>
+        <a href="#study">学びたいこと</a>
+        <a href="#message">メッセージ</a>
+    </nav>
 
+    <!-- メインコンテンツ -->
+    <main>
+
+        <!-- 自己紹介のキャッチコピー -->
+        <section class="catchcopy">
+            <h2>Welcome to My Portfolio!</h2>
+            <p>週末はゲームをしています</p>
+        </section>
+
+        <!-- 基本プロフィール -->
+        <section id="profile">
+            <h2>Profile</h2>
+            <div class="profile-item">
+                <strong>名前</strong>
+                shota
+            </div>
+            <div class="profile-item">
+                <strong>学年</strong>
+                3年
+            </div>
+            <div class="profile-item">
+                <strong>所属</strong>
+                拓殖大学 工学部
+            </div>
+        </section>
+
+        <!-- 趣味・好きなこと -->
+        <section id="hobby">
+            <h2>Hobby</h2>
+            <p>週末はゲームを楽しんでいます。</p>
+        </section>
+
+        <!-- プログラミング経験 -->
+        <section id="programming">
+            <h2>Programming</h2>
+            <p>プログラミングについて学んでいます。</p>
+        </section>
+
+        <!-- 授業で学びたいこと -->
+        <section id="study">
+            <h2>What I Want to Learn</h2>
+            <p>この授業では、Gitについて学びたいです。</p>
+        </section>
+
+        <!-- 最後のメッセージ -->
+        <section id="message">
+            <h2>Message</h2>
+            <p>よろしくお願いします！</p>
+        </section>
+
+    </main>
+
+    <!-- コピーライト -->
     <footer>
-      拓殖大学工学部『オープンソースソフトウェア』2026年度<br>
-      <a href="https://github.com/tomohitoy/oss-practice-2026/blob/main-07/chap07/README.md">第7回の資料</a>
-      ・
-      <a href="https://github.com/tomohitoy/oss-template-2026">テンプレート（tomohitoy/oss-template-2026）</a>
+        <p>&copy; shota's Portfolio</p>
     </footer>
-  </main>
+
 </body>
 </html>
